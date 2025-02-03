@@ -1,9 +1,12 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
-function Diary() {
+const  Diary = () => {
+  const {id} = useParams();
   return (
     <div>
-      diary
+      <div>{id}번일기</div>
+      diary입니다
     </div>
   )
 }
