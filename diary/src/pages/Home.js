@@ -1,6 +1,9 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
-import Button from '../components/Button';
+import Button from '../component/Button';
+import Header from '../component/Header';
+import Editor from './Editor';
+
 
 
 function Home() {
@@ -9,28 +12,35 @@ function Home() {
   
   return (
     <div>
-      <Button 
-      text={"기본 버튼"}
-      onClick={()=> {
-        alert("hi")
+      <Header 
+        title={"Home"}
+        leftChild={
+          <Button
+            type="positive"
+            text={"긍정 버튼"}
+            onClick={()=> {
+              alert("positive")
+            }}
+            /> 
+        }
+        rightChild={
+          <Button
+            type="negative"
+            text={"부정 버튼"}
+            onClick={()=> {
+              alert("negative")
+            }}
+            /> 
+        }  
+        />
+    <Editor
+      onSubmit={() => {
+        alert('작성 완료 버튼 클릭!!');
       }}
-      />
-      <Button 
-      type="positive"
-      text={"긍정 버튼"}
-      onClick={()=> {
-        alert("positive")
-      }}
-      />
-      <Button 
-      type="negative"
-      text={"부정 버튼"}
-      onClick={()=> {
-        alert("negative")
-      }}
-      />
+    />
     </div>
   )
 }
+
 
 export default Home
