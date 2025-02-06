@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getFormattedDate , emotionList } from '../util'
 import Button from '../component/Button'
 import "./Editor.css"
@@ -12,6 +12,14 @@ const  Editor = ({initData, onSubmit}) =>  {
     emotionId : 3,
     content : "",
   })
+    useEffect(()=> {
+      if(initData) {
+        setState({
+          ...initData,
+          date: getFormattedDate(new Date(parseInt(initData.date))),
+        })
+      }
+    },[initData])
   const handleOnGoBack =() => {
     navigate(-1)
   }
