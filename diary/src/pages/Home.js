@@ -1,77 +1,65 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import Button from '../component/Button';
-import Header from '../component/Header';
-import Editor from './Editor';
-import Diary from './Diary';
-import { DiaryStateContext } from '../App';
-import { getMonthRangeByDate } from '../util';
-import DiaryList from '../component/DiaryList';
+import { useContext, useEffect, useState } from "react";
+import { DiaryStateContext } from "../App";
 
+import MyHeader from "./../components/MyHeader";
+import MyButton from "./../components/MyButton";
+import DiaryList from "./../components/DiaryList";
 
+const Home = () => {
+  const diaryList = useContext(DiaryStateContext);
 
-function Home() {
-    
-  const data = useContext(DiaryStateContext);
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [pivotDate, setPivotDate] = useState(new Date())
-  const [filteredData, setFilteredData] = useState([])
+  const [data, setData] = useState([]);
+  const [curDate, setCurDate] = useState(new Date());
+  const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월📙`;
 
-  useEffect(()=> {
-    if(data.length >= 1) {
-      const {beginTimeStamp, endTimeStamp} =getMonthRangeByDate(pivotDate)
-      setFilteredData(
-        data.filter((it)=> beginTimeStamp <= it.date && it.date <= endTimeStamp)
-        
-      )
-    }else {
-      setFilteredData([])
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `감정 일기장📙`;
+  }, []);
+
+  useEffect(() => {
+    if (diaryList.length >= 1) {
+      const firstDay = new Date(
+        curDate.getFullYear(),
+        curDate.getMonth(),
+        1
+      ).getTime();
+
+      const lastDay = new Date(
+        curDate.getFullYear(),
+        curDate.getMonth() + 1,
+        0,
+        23,
+        59,
+        59
+      ).getTime();
+
+      setData(
+        diaryList.filter((it) => firstDay <= it.date && it.date <= lastDay)
+      );
+    } else {
+      setData([]);
     }
-  },
-  [data, pivotDate])
+  }, [diaryList, curDate]);
 
-  const headerTitle  =`${pivotDate.getFullYear()}년 ${pivotDate.getMonth() + 1}월`
+  const increaseMonth = () => {
+    setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() + 1));
+  };
 
-  console.log(searchParams.get("sort"));
+  const decreaseMonth = () => {
+    setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() - 1));
+  };
 
-  const onIncreaseMonth = () => {
-    setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() + 1))
-  }
-  const onDecreaseMonth = () => {
-    setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() - 1))
-  }
-  
   return (
     <div>
-      <Header 
-        title={headerTitle}
-        leftChild={
-          <Button
-            text={"<"}
-            onClick={onDecreaseMonth}
-            /> 
-        }
-        rightChild={
-          <Button
-            text={">"}
-            onClick={onIncreaseMonth}
-            /> 
-        }
-        />
-    <Editor
-       initDate={{
-        date : new Date().getTime(),
-        emotionId : 1,
-        content : "이전에 작성했던 일기",
-       }}
-      onSubmit={() => {
-        alert('작성 완료 버튼 클릭!!');
-      }}
+      <MyHeader
+        headText={headText}
+        leftChild={<MyButton text={"<"} onClick={decreaseMonth} />}
+        rightChild={<MyButton text={">"} onClick={increaseMonth} />}
       />
-      <DiaryList data={filteredData}/>
+      <DiaryList diaryList={data} />
     </div>
-  )
-}
+  );
+};
 
-
-export default Home
+export default Home;
