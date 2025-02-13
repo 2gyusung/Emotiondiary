@@ -7,8 +7,8 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "gh-pages": "^6.3.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-router-dom": "^6.0.2",
     "react-scripts": "^5.0.1",
     "web-vitals": "^1.1.2"
@@ -38,6 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://2gyusung.github.io/Emotiondiary/diary"
+  }
 }
