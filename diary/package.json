@@ -2,14 +2,13 @@
   "name": "emotion-diary",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://2gyusung.github.io/Emotiondiary/diary",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "gh-pages": "^6.3.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-router-dom": "^6.0.2",
     "react-scripts": "^5.0.1",
     "web-vitals": "^1.1.2"
@@ -19,10 +18,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-      "predeploy": "npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -40,5 +38,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "https://2gyusung.github.io/Emotiondiary"
 }
