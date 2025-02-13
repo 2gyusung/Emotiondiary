@@ -2,6 +2,7 @@
   "name": "emotion-diary",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://2gyusung.github.io/Emotiondiary/diary",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
@@ -21,7 +22,7 @@
       "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://2gyusung.github.io/Emotiondiary/",
+
   "eslintConfig": {
     "extends": [
       "react-app",
