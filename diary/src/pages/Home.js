@@ -6,6 +6,7 @@ import MyButton from "./../components/MyButton";
 import DiaryList from "./../components/DiaryList";
 
 const Home = () => {
+  // 인덱스 페이지
   const diaryList = useContext(DiaryStateContext);
 
   const [data, setData] = useState([]);

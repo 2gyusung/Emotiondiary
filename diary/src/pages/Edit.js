@@ -4,6 +4,7 @@ import { DiaryStateContext } from "../App";
 import DiaryEditor from "../components/DiaryEditor";
 
 const Edit = () => {
+  // 작성한 일기를 수정하거나 삭제하는 페이지
   const [originData, setOriginData] = useState();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -15,7 +16,7 @@ const Edit = () => {
     titleElement.innerHTML = `감정 일기장 - ${id}번 일기 수정`;
   }, []);
 
-  useEffect(() => {
+  useEffect(() => {  
     if (diaryList.length >= 1) {
       const targetDiary = diaryList.find(
         (it) => parseInt(it.id) === parseInt(id)

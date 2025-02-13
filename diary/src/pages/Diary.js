@@ -8,6 +8,7 @@ import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
 
 const Diary = () => {
+  // 일기 상세 조회 페이지
   const { id } = useParams();
   const diaryList = useContext(DiaryStateContext);
   const navigate = useNavigate();
