@@ -21,6 +21,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "homepage": "https://2gyusung.github.io/Emotiondiary/",
   "eslintConfig": {
     "extends": [
       "react-app",
